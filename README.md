@@ -156,7 +156,7 @@ where you will find it in your distribution's repositories.
 
 To install:
 
-`$ pip install --user aimsextract`
+`$ pip install --user aims_extract`
 
 # Usage #
 

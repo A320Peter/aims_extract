@@ -82,7 +82,7 @@ eventuality it should be possible to switch to driving an actual
 Chromium based web browser to complete whatever authentication is
 required. This is not guaranteed to be successful, however.
 
-# On Performance #
+# On performance #
 
 Scraping data in this manner is not a particularly efficient thing to
 do. While the program is working it will output a `.` every time that
@@ -134,12 +134,13 @@ will probably work.
 ## From PyPI using pip (all OS) ##
 
 You need a Python interpreter newer than version 3.6. This is likely
-pre-installed on Linux or Mac. Many Linux distributions have both a
-version 2.x interpreter and a version 3.x interpreter installed: if
-this is the case, replace `python` with `python3` and `pip` with
-`pip3` in the instructions below. Windows users will likely need to
-download an installer suitable for their version of Windows from
-<https://python.org> (make sure you tick the “Add Python to PATH” box).
+pre-installed on Linux. Many Linux distributions have both a version
+2.x interpreter and a version 3.x interpreter installed: if this is
+the case, replace `python` with `python3` and `pip` with `pip3` in the
+instructions below. Windows users will likely need to download an
+installer suitable for their version of Windows from
+<https://python.org> (make sure you tick the “Add Python to PATH”
+box).
 
 Check your python version with:
 

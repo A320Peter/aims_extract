@@ -119,7 +119,7 @@ def get_trip_duties(aims_day: str,
             #if we get here, we tried to find a trip that
             #didn't exist. That probably means that our
             #list of day off codes is incomplete. Ho hum.
-            fprint("\nNo trip details for {}:{}\n".format(
+            access.fprint("\nNo trip details for {}:{}\n".format(
                 aims_day, trip_id))
     else:
         duty_list.extend(cache["trips"][cache_key])

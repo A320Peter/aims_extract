@@ -28,7 +28,9 @@ class TestBriefRosterProcessing(unittest.TestCase):
     def get_trip_duties_patch(aims_day: str,
                     trip_id: str,
                     date: datetime.date,
-                    cache: dict) -> List[Duty]:
+                    cache: dict,
+                    force: bool = False
+    ) -> List[Duty]:
         if aims_day == '14158' and trip_id == '89':
             return [Duty(datetime.datetime.combine(date, dt.time(7)),
                      datetime.datetime.combine(date, dt.time(20)),

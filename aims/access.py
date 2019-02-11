@@ -179,7 +179,7 @@ def get_crewlist(id_: str) -> str:
         click a sector on an AIMS duty sheet.
     """
     global _session, _aims_url
-    assert _aims_url, "Must connect before calling get_trip."
+    assert _aims_url, "Must connect before calling get_crewlist."
     r = _session.get(_aims_url + "perinfo.exe/getlegmem",
                     params={
                         "LegInfo": id_,
@@ -200,6 +200,6 @@ def get_index_page() -> str:
         The HTML of the AIMS index page.
     """
     global _session, _aims_url
-    assert _aims_url, "Must connect before calling get_trip."
+    assert _aims_url, "Must connect before calling get_index_page."
     r = _session.get(_aims_url + "perinfo.exe/index", timeout=REQUEST_TIMEOUT)
     return r.text

@@ -41,7 +41,8 @@ def main():
         access.fprint(" Done\n")
         no_changes_marker = '\r\nvar notification = Trim("");\r\n'
         if index_page.find(no_changes_marker) == -1:
-            print("You have changes.")
+            output = sys.stdout if args.format == "changes" else sys.stderr
+            print("You have changes.", file=output)
             return
         if args.format == "changes":
             print("No changes")

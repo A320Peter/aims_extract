@@ -131,7 +131,7 @@ def dump(dutylist: List[Duty]) -> str:
         reg = None
         crewlist = None
         for sector in duty.sectors:
-            if not (sector.on and sector.off) : continue
+            if not (sector.on and sector.off) or sector.pax: continue
             if sector.crewlist and crewlist != sector.crewlist:
                 crewstr = ", ".join(
                     ["{}:{}".format(X.role, X.name) for X in sector.crewlist])

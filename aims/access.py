@@ -81,10 +81,16 @@ def connect(username:str, password:str) -> None:
     url = soup.form["action"]
     saml_response = soup.input['value']
     r = _session.post(url, {"SAMLResponse": saml_response}, timeout=REQUEST_TIMEOUT)
-    r = _session.get(r.url + "cms/f5-h-$$/portal/cms/redirect/ecrew",
-                     timeout=REQUEST_TIMEOUT)
-    fprint(" Done\n")
+    autologin_url = r.url + "cms/f5-h-$$/portal/cms/redirect/ecrew"
+    r = _session.get(autologin_url, timeout=REQUEST_TIMEOUT)
     _aims_url = r.url.split("wtouch.exe")[0]
+    # fix for session behaviour introduced by 2019-03-14 AIMS update
+    if r.text.find("Please log out and try again.") != -1:
+        _session.post(_aims_url + "perinfo.exe/AjAction?LOGOUT=1",
+                      {"AjaxOperation": "0"}, timeout=REQUEST_TIMEOUT)
+        r = _session.get(autologin_url, timeout=REQUEST_TIMEOUT)
+        _aims_url = r.url.split("wtouch.exe")[0]
+    fprint(" Done\n")
 
 
 def get_brief_roster(offset: int = 0) -> str:

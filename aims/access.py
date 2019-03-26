@@ -7,7 +7,7 @@ import sys
 
 REQUEST_TIMEOUT=60
 
-_session = requests.Session()
+_session = None
 _aims_url = None
 
 def fprint(str_: str) -> None:
@@ -58,6 +58,7 @@ def connect(username:str, password:str) -> None:
     _session object and in the global _aims_url variable respectively.
     """
     global _session, _aims_url
+    _session = requests.Session()
     _session.hooks['response'].append(_check_response)
     _session.headers.update({
         "User-Agent":

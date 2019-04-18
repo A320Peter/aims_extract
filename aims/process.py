@@ -167,6 +167,8 @@ def process_aims_duty(
     try:
         trip_day = int(aims_duty[0][7]) - 1
         date = start_date + dt.timedelta(days=trip_day)
+        #fix for AIMS bug where end of duty can have non-existent time 24:00
+        if aims_duty[-1][-1] == "24:00": aims_duty[-1][-1] = "00:00"
         duty_end_time = dt.datetime.strptime(aims_duty[-1][-1], "%H:%M").time()
         index = -2 if len(aims_duty) == 1 else -1
         duty_start_time = dt.datetime.strptime(aims_duty[0][index], "%H:%M").time()
